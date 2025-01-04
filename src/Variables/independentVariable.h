@@ -10,21 +10,4 @@ class IndependentVariable: public Variable {
         double evaluate(double x) const override {
             return x;
         }
-
-    static IndependentVariable getInstance() {
-        return *std::make_shared<IndependentVariable>();
-    }
-    
-    std::shared_ptr<Expression> operator+(const std::shared_ptr<Expression>& other) const;
-    std::shared_ptr<Expression> operator+(double other) const;
-
-    std::shared_ptr<Expression> operator-(const std::shared_ptr<Expression>& other) const;
-    std::shared_ptr<Expression> operator-(double other) const;
-
-    std::shared_ptr<Expression> operator*(const std::shared_ptr<Expression>& other) const;
-    std::shared_ptr<Expression> operator*(double other) const;
-    
-    std::shared_ptr<Expression> operator/(const std::shared_ptr<Expression>& other) const;
-    std::shared_ptr<Expression> operator/(double other) const;
-
 };

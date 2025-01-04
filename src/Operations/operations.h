@@ -1,5 +1,5 @@
 #pragma once
-#include "addition.cpp"
-#include "substraction.cpp"
-#include "multiplication.cpp"
-#include "division.cpp"
+#include "binaryOperations/addition.cpp"
+#include "binaryOperations/substraction.cpp"
+#include "binaryOperations/multiplication.cpp"
+#include "binaryOperations/division.cpp"

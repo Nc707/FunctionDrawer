@@ -10,9 +10,8 @@ include_directories(src)
 file(GLOB SOURCES 
 "src/*.cpp" 
 "src/*.h" 
-"src/Operations/*.cpp" 
 "src/Operations/*.h"
-"src/Variables/*.cpp"
+"src/Operations/binaryOperations/*.cpp"
 "src/Variables/*.h"
 )
 

@@ -3,7 +3,7 @@
 #include <fstream>
 #include <vector>
 #include "function.h"
-#include "Variables/independentVariable.h"
+#include "var.h"
 void generarSVG(const std::vector<std::pair<double, double>>& puntos, const std::string& filename) {
     std::ofstream file(filename);
     if (!file.is_open()) {
@@ -23,9 +23,9 @@ void generarSVG(const std::vector<std::pair<double, double>>& puntos, const std:
 }
 
 int main() {
-    auto x = std::make_shared<IndependentVariable>();
-    auto expression = *x * 2;
-    Function funcion = Function(expression);
+    auto x = var();
+    x = x * 2 * x + 3;
+    Function funcion = Function(x.getArgument());
     std::vector<std::pair<double, double>> puntos = funcion.generatePoints(0, 10, 1);
     for (const auto& punto : puntos) {
         std::cout << "(" << punto.first << ", " << punto.second << ")\n";

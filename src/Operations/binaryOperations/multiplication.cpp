@@ -1,5 +1,5 @@
 #include <memory>
-#include "binaryOperation.h"
+#include "../binaryOperation.h"
 
 class Multiplication: public BinaryOperation {
     public:
