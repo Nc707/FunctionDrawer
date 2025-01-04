@@ -6,39 +6,50 @@ This project implements a simple expression evaluation framework in C++. It incl
 
 ```
 FunctionDrawer
+├── CMakeLists.txt
+├── README.md --> You are here
 ├── src
-│   ├── main.cpp          # Contains the main function
-│   ├── Expression.h      # Declares the Expression base class
-│   ├── function.h        # Declares the Function class
-│   ├── Operations        # Contains operation classes
-│   │   ├── addition.cpp
+│   ├── expression.h
+│   ├── function.h
+│   ├── main.cpp
+│   ├── Operations
 │   │   ├── binaryOperation.h
-│   │   ├── division.cpp
-│   │   ├── exponent.cpp
-│   │   ├── multiplication.cpp
+│   │   ├── binaryOperations
+│   │   │   ├── addition.cpp
+│   │   │   ├── division.cpp
+│   │   │   ├── exponent.cpp
+│   │   │   ├── logaritm.cpp
+│   │   │   ├── multiplication.cpp
+│   │   │   ├── substraction.cpp
 │   │   ├── operations.h
-│   │   └── substraction.cpp
-│   └── Variables         # Contains variable classes
-│       ├── all-variables.h
-│       ├── constant.h
-│       ├── independentVariable.cpp
-│       ├── independentVariable.h
-│       └── variable.h
-├── CMakeLists.txt        # CMake configuration file
-└── README.md             # Project documentation
+│   │   ├── unaryOperation.h
+│   │   ├── unaryOperations
+│   │   │   ├── negation.cpp
+│   │   │   ├── trigonometricOperations
+│   │   │   │   ├── cosine.cpp
+│   │   │   │   ├── sine.cpp
+│   │   │   │   ├── tangent.cpp
+│   ├── var.h
+│   ├── Variables
+│   │   ├── all-variables.h
+│   │   ├── integerConstant.h
+│   │   ├── integerIndependentVariable.h
+│   │   ├── realConstant.h
+│   │   ├── realIndependentVariable.h
+│   │   ├── variable.h
 ```
 
 ## Files Overview
 
-- **src/main.cpp**: This file contains the main function of the application. It sets up the expression and generates points based on a given range.
+- **src/main.cpp**: This file is the playground area. It is currently used to test out the Project
 
-- **src/Expression.h**: This file declares the `Expression` class, which serves as a base class for various expression types. It includes a pure virtual method `evaluate` that must be implemented by derived classes.
+- **src/expression.h**: This file declares the `Expression` class, which serves as a base class for various expression types. It includes a pure virtual method `evaluate` that must be implemented by derived classes.
 
 - **src/function.h**: This file declares the `Function` class, which takes an `Expression` and generates points by evaluating the expression over a range.
 
-- **src/Operations**: This directory contains the implementation of various operations such as addition, subtraction, multiplication, and division. Each operation is implemented as a class that inherits from `BinaryOperation`.
+- **src/Operations**: This directory contains the implementation of various operations such as addition, subtraction, multiplication, and division. Each operation is implemented as a class that inherits from `BinaryOperation` or `UnaryOperation`.
 
-- **src/Variables**: This directory contains the implementation of various variable types such as `IndependentVariable` and `Constant`. These classes inherit from `Variable`, which in turn inherits from `Expression`.
+- **src/Variables**: This directory contains the implementation of various variable types such as `RealIndependentVariable` and `RealConstant`. These classes inherit from `Variable`, which in turn inherits from `Expression`.
 
 - **CMakeLists.txt**: This file is the configuration file for CMake. It specifies the project name, the required C++ standard, and the source files to be compiled.
 
