@@ -1,5 +1,5 @@
 #pragma once
-#include <memory>
+#include <stdexcept>
 #include "../expression.h"
 class BinaryOperation: public Expression {
     protected:

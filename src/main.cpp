@@ -1,4 +1,3 @@
-// File: /my-cpp-project/my-cpp-project/src/main.cpp
 #include <iostream>
 #include <fstream>
 #include <vector>
@@ -14,9 +13,9 @@ void generarSVG(const std::vector<std::pair<double, double>>& puntos, const std:
     file << "<svg xmlns=\"http://www.w3.org/2000/svg\" version=\"1.1\">\n";
     file << "<polyline points=\"";
     for (const auto& punto : puntos) {
-        file << punto.first << "," << punto.second << " ";
+        file << punto.first << "," << punto.second + 10 << " ";
     }
-    file << "\"\n style= \"fill:none;stroke:black;stroke-width:3\" />\n";
+    file << "\"\n style= \"fill:none;stroke:black;stroke-width:0.5\" />\n";
     file << "</svg>\n";
 
     file.close();
@@ -24,13 +23,12 @@ void generarSVG(const std::vector<std::pair<double, double>>& puntos, const std:
 
 int main() {
     auto x = var();
-    x = x * 2 * x + 3;
+    x = sin(x)*6;
     Function funcion = Function(x.getArgument());
-    std::vector<std::pair<double, double>> puntos = funcion.generatePoints(0, 10, 1);
+    std::vector<std::pair<double, double>> puntos = funcion.generatePoints(0, 200, 0.1);
     for (const auto& punto : puntos) {
         std::cout << "(" << punto.first << ", " << punto.second << ")\n";
     }
     generarSVG(puntos, "output.svg");
-    system("pause");
     return 0;
 }

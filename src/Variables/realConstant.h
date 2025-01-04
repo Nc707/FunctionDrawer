@@ -1,12 +1,11 @@
 #pragma once
-#include "all-variables.h"
-#include "../Operations/operations.h"
+#include "variable.h"
 
-class Constant: public Variable {
+class RealConstant: public Variable {
     private:
         double value;
     public:
-        Constant(double value): value(value) {}
+        RealConstant(double value): value(value) {}
         double evaluate(double x) const override {
             return value;
         }

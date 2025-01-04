@@ -12,7 +12,10 @@ file(GLOB SOURCES
 "src/*.h" 
 "src/Operations/*.h"
 "src/Operations/binaryOperations/*.cpp"
+"src/Operations/unaryOperations/*.cpp"
+"src/Operations/unaryOperations/trigonometricOperations/*.cpp"
 "src/Variables/*.h"
+
 )
 
 add_executable(FunctionDrawer ${SOURCES})
