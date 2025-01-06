@@ -2,7 +2,8 @@
 #include <stdexcept>
 #include "../expression.h"
 
-class Variable: public Expression {
+template <typename Type>
+class Variable: public Expression<Type> {
     public:
         virtual ~Variable() = default;
 };

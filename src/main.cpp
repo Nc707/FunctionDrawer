@@ -23,7 +23,7 @@ void generarSVG(const std::vector<std::pair<double, double>>& puntos, const std:
 
 int main() {
     auto x = var();
-    x = sin(x)*6;
+    x = sin(x) / cos(x);
     Function funcion = Function(x.getArgument());
     std::vector<std::pair<double, double>> puntos = funcion.generatePoints(0, 200, 0.1);
     for (const auto& punto : puntos) {
