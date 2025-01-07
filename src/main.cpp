@@ -1,9 +1,9 @@
 #include <iostream>
 #include <fstream>
 #include <vector>
-#include "function.h"
+#include "PointsGenerators/2DGenerators/basic2DGenerator.h"
 #include "var.h"
-void generarSVG(const std::vector<std::pair<double, double>>& puntos, const std::string& filename) {
+void generarSVG(const std::vector<std::tuple<double, double>>& puntos, const std::string& filename) {
     std::ofstream file(filename);
     if (!file.is_open()) {
         std::cerr << "No se pudo abrir el archivo para escribir.\n";
@@ -13,7 +13,7 @@ void generarSVG(const std::vector<std::pair<double, double>>& puntos, const std:
     file << "<svg xmlns=\"http://www.w3.org/2000/svg\" version=\"1.1\">\n";
     file << "<polyline points=\"";
     for (const auto& punto : puntos) {
-        file << punto.first << "," << punto.second + 10 << " ";
+        file << std::get<0>(punto) << "," << std::get<1>(punto) + 10 << " ";
     }
     file << "\"\n style= \"fill:none;stroke:black;stroke-width:0.5\" />\n";
     file << "</svg>\n";
@@ -24,11 +24,11 @@ void generarSVG(const std::vector<std::pair<double, double>>& puntos, const std:
 int main() {
     auto x = var();
     x = sin(x) / cos(x);
-    Function funcion = Function(x.getArgument());
-    std::vector<std::pair<double, double>> puntos = funcion.generatePoints(0, 200, 0.1);
-    for (const auto& punto : puntos) {
-        std::cout << "(" << punto.first << ", " << punto.second << ")\n";
-    }
+    Basic2DGenerator<double> funcion(x.getArgument());
+    std::vector<std::tuple<double, double>> puntos = funcion.generatePoints({-10, 1000, 0.1});
+    //for (const auto& punto : puntos) {
+    //    std::cout << "(" << std::get<0>(punto) << ", " << std::get<1>(punto) << ")\n";
+    //}
     generarSVG(puntos, "output.svg");
     return 0;
 }

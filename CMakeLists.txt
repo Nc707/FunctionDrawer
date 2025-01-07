@@ -22,6 +22,9 @@ file(GLOB SOURCES
     "src/Expressions/Variables/*.cpp"
     "src/Expressions/Variables/Constants/*.cpp"
     "src/Expressions/Variables/IndependentVariables/*.cpp"
+    "src/Factories/*.cpp"
+    "src/PointsGenerators/2DGenerators/*.cpp"
+    "src/PointsGenerators/3DGenerators/*.cpp"
 )
 
 add_executable(FunctionDrawer ${SOURCES})
