@@ -1,9 +1,9 @@
 #include "unaryStrategy.h"
 
 template <typename Type>
-class negation: UnaryStrategy<Type> {
+class Negation: UnaryStrategy<Type> {
     public:
-        double evaluate(const Type& argument) const override {
+        Type evaluate(const Type& argument) const override {
             return -argument;
         }
 };

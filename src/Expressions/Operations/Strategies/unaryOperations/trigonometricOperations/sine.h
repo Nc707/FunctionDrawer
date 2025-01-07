@@ -5,7 +5,7 @@
 template <typename Type>
 class Sine : public UnaryStrategy<Type> {
 public:
-    double evaluate(const Type& argument) const override {
+    Type evaluate(const Type& argument) const override {
         return std::sin(argument);
     }
 };

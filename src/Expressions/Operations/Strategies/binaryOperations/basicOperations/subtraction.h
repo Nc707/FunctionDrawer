@@ -2,9 +2,9 @@
 #include "../binaryStrategy.h"
 
 template <typename Type>
-class Multiplication : public BinaryStrategy<Type> {
+class Subtraction : public BinaryStrategy<Type> {
 public:
     Type evaluate(const Type& left, const Type& right) const override {
-        return left * right;
+        return left - right;
     }
 };

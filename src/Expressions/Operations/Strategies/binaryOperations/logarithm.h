@@ -5,7 +5,7 @@
 template <typename Type>
 class Logarithm : public BinaryStrategy<Type> {
 public:
-    double evaluate(const Type& base, const Type& argument) const override {
+    Type evaluate(const Type& base, const Type& argument) const override {
         if (base <= 0 || argument <= 0) {
             throw std::invalid_argument("The base and the argument must be positive.");
         }

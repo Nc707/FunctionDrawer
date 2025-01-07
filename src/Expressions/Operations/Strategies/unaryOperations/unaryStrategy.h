@@ -7,4 +7,7 @@ public:
     Type evaluate(const Type& left, const Type& right) const override{
         throw std::invalid_argument("Unary operation requires only one argument.");
     }
+    int getArity() const override{
+        return 1;
+    }
 };

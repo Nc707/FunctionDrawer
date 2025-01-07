@@ -4,7 +4,8 @@
 
 template <typename Type>
 class BinaryOperation: public Operation<Type> {
-    protected:
+    private:
+        static const int ARITY = 2;
         std::shared_ptr<Expression> izquierda;
         std::shared_ptr<Expression> derecha;
         std::shared_ptr<OperationStrategy<Type>> strategy;
@@ -15,5 +16,9 @@ class BinaryOperation: public Operation<Type> {
 
         Type evaluate(Type value) const override {
             return strategy->evaluate(izquierda->evaluate(value), derecha->evaluate(value));
+        }
+
+        static int getArity(){
+            return ARITY;
         }
 };

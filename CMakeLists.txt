@@ -2,28 +2,26 @@ cmake_minimum_required(VERSION 3.10)
 
 project(FunctionDrawer)
 
-set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
+# Include directories for header files
 include_directories(src)
 
+# Gather all source files (only .cpp files)
 file(GLOB SOURCES 
-"src/*.cpp" 
-"src/*.h" 
-"src/Expressions/*.h"
-"src/Expressions/Operations/*.h"
-"src/Expressions/Operations/binaryOperations/*.cpp"
-"src/Expressions/Operations/unaryOperations/*.cpp"
-"src/Expressions/Operations/unaryOperations/trigonometricOperations/*.cpp"
-"src/Expressions/Operations/Strategies/*.h"
-"src/Expressions/Operations/Strategies/binaryOperations/*.h"
-"src/Expressions/Operations/Strategies/binaryOperations/basicOperations/*.h"
-"src/Expressions/Operations/Strategies/unaryOperations/*.h"
-"src/Expressions/Operations/Strategies/unaryOperations/trigonometricOperations/*.h"
-"src/Expressions/Variables/*.cpp"
-"src/Expressions/Variables/*.h"
-"src/Expressions/Variables/Constants/*.h"
-"src/Expressions/Variables/IndependentVariables/*.h"
+    "src/Factories/*.cpp"
+    "src/*.cpp"
+    "src/Expressions/*.cpp"
+    "src/Expressions/Operations/*.cpp"
+    "src/Expressions/Operations/Strategies/*.cpp"
+    "src/Expressions/Operations/Strategies/binaryOperations/*.cpp"
+    "src/Expressions/Operations/Strategies/binaryOperations/basicOperations/*.cpp"
+    "src/Expressions/Operations/Strategies/unaryOperations/*.cpp"
+    "src/Expressions/Operations/Strategies/unaryOperations/trigonometricOperations/*.cpp"
+    "src/Expressions/Variables/*.cpp"
+    "src/Expressions/Variables/Constants/*.cpp"
+    "src/Expressions/Variables/IndependentVariables/*.cpp"
 )
 
 add_executable(FunctionDrawer ${SOURCES})

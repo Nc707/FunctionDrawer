@@ -4,7 +4,7 @@
 
 template <typename Type>
 class UnaryOperation: public Operation<Type> {
-    protected:
+    private:
         std::shared_ptr<Expression> argument;
         std::shared_ptr<OperationStrategy<Type>> strategy;
     public:
@@ -14,4 +14,8 @@ class UnaryOperation: public Operation<Type> {
         Type evaluate(Type value) const override {
             return strategy->evaluate(argument->evaluate(value));
         }
+
+    static int getArity(){
+        return 1;
+    }
 };

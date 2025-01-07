@@ -7,4 +7,7 @@ public:
     Type evaluate(const Type& argument) const override{
         throw std::invalid_argument("Binary operation requires two arguments.");
     }
+    int getArity() const override{
+        return 2;
+    }
 };

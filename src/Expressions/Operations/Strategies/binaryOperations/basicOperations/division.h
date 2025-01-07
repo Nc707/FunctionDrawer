@@ -4,7 +4,7 @@
 template <typename Type>
 class Division: public BinaryStrategy<Type> {
     public:
-        double evaluate(const Type& numerator,const Type& denominator) const override {
+        Type evaluate(const Type& numerator,const Type& denominator) const override {
             try{
                 return numerator / denominator;
             } catch (std::invalid_argument&) {
