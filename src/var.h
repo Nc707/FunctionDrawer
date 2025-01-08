@@ -1,6 +1,6 @@
 #pragma once
 #include <memory>
-#include "Factories/realExpressionFactory.h"
+#include "Factories/basicFactory.h"
 namespace ArithmeticPoints{
 template <typename Type>
 class var {
