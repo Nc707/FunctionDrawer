@@ -1,5 +1,7 @@
 #include "unaryStrategy.h"
 
+namespace ArithmeticPoints{
+namespace Strategies{
 template <typename Type>
 class Negation: UnaryStrategy<Type> {
     public:
@@ -7,3 +9,5 @@ class Negation: UnaryStrategy<Type> {
             return -argument;
         }
 };
+}
+}

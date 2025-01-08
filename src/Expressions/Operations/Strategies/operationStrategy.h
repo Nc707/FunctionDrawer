@@ -1,5 +1,7 @@
 #pragma once
 
+namespace ArithmeticPoints{
+namespace Strategies{
 template<typename Type>
 class OperationStrategy {
 public:
@@ -7,3 +9,5 @@ public:
     virtual Type evaluate(const Type& value) const = 0;
     virtual int getArity() const = 0;
 };
+}
+}

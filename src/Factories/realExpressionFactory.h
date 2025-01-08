@@ -2,6 +2,9 @@
 
 #include "basicFactory.h"
 #include "../Expressions/all_expressions.h"
+
+namespace ArithmeticPoints{
+namespace Factories{
 class RealExpressionFactory : public BasicFactory<double> {
 public:
     RealExpressionFactory() {
@@ -10,3 +13,5 @@ public:
 
     void registerStrategies() override;
 };
+}
+}

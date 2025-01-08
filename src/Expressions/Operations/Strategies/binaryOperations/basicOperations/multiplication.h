@@ -1,6 +1,7 @@
 #pragma once
 #include "../binaryStrategy.h"
-
+namespace ArithmeticPoints{
+namespace Strategies{
 template <typename Type>
 class Multiplication : public BinaryStrategy<Type> {
 public:
@@ -8,3 +9,5 @@ public:
         return left * right;
     }
 };
+}
+}

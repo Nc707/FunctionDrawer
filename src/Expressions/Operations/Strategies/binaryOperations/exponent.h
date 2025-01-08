@@ -1,7 +1,8 @@
 #pragma once
 #include "binaryStrategy.h"
 #include <cmath>
-
+namespace ArithmeticPoints{
+namespace Strategies{
 template <typename Type>
 class Exponent : public BinaryStrategy<Type> {
 public:
@@ -9,3 +10,5 @@ public:
         return std::pow(base, exponent);
     }
 };
+}
+}

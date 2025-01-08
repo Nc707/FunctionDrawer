@@ -2,6 +2,8 @@
 #include "../unaryStrategy.h"
 #include <cmath>
 
+namespace ArithmeticPoints{
+namespace Strategies{
 template <typename Type>
 class Tangent : public UnaryStrategy<Type> {
 public:
@@ -9,3 +11,5 @@ public:
         return std::tan(argument);
     }
 };
+}
+}

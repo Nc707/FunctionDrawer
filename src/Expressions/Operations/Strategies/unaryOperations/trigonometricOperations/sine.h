@@ -1,7 +1,8 @@
 #pragma once
 #include "../unaryStrategy.h"
 #include <cmath>
-
+namespace ArithmeticPoints{
+namespace Strategies{
 template <typename Type>
 class Sine : public UnaryStrategy<Type> {
 public:
@@ -9,3 +10,5 @@ public:
         return std::sin(argument);
     }
 };
+}
+}

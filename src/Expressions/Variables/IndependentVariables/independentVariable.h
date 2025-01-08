@@ -1,6 +1,8 @@
 #pragma once
 #include "../variable.h"
 
+namespace ArithmeticPoints{
+namespace Expressions{
 template <typename Type>
 class IndependentVariable : public Variable<Type> {
 public:
@@ -8,3 +10,5 @@ public:
         return x;
     }
 };
+}
+}

@@ -1,6 +1,7 @@
 #pragma once
 #include "../variable.h"
-
+namespace ArithmeticPoints{
+namespace Expressions{
 template <typename Type>
 class Constant : public Variable<Type> {
 private:
@@ -11,3 +12,5 @@ public:
         return value;
     }
 };
+}
+}

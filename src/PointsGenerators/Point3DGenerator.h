@@ -3,6 +3,9 @@
 #include "../Expressions/expression.h"
 #include "axisData.h"
 
+namespace ArithmeticPoints{
+namespace PointGeneration{
+
 template <typename Type>
 struct planeData {
     axisData<Type> xData;
@@ -22,3 +25,5 @@ public:
 
     virtual std::vector<std::tuple<double, double, double>> generatePoints(volumeData data) const = 0;
 };
+}
+}

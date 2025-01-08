@@ -1,6 +1,8 @@
 #pragma once
 #include <memory>
 
+namespace ArithmeticPoints{
+namespace Expressions{
 template <typename Type>
 class Expression {
     public:
@@ -8,3 +10,5 @@ class Expression {
         virtual ~Expression() = default;
         
 };
+}
+}

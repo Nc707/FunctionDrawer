@@ -2,6 +2,8 @@
 #include "binaryStrategy.h"
 #include <cmath>
 
+namespace ArithmeticPoints{
+namespace Strategies{
 template <typename Type>
 class Logarithm : public BinaryStrategy<Type> {
 public:
@@ -12,3 +14,5 @@ public:
         return std::log(argument) / std::log(base);
     }
 };
+}
+}

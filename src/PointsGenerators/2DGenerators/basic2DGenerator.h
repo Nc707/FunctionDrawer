@@ -1,9 +1,12 @@
 #include "../Point2DGenerator.h"
 
+namespace ArithmeticPoints{
+namespace PointGeneration{
+
 template <typename Type>
 class Basic2DGenerator : public Point2DGenerator<Type> {
 public:
-    Basic2DGenerator(std::shared_ptr<Expression<Type>> expr) : Point2DGenerator<Type>(std::move(expr)) {}
+    Basic2DGenerator(std::shared_ptr<Expressions::Expression<Type>> expr) : Point2DGenerator<Type>(std::move(expr)) {}
 
     std::vector<std::tuple<double, double>> generatePoints(axisData<Type> data) const override {
         std::vector<std::tuple<double, double>> points;
@@ -14,3 +17,6 @@ public:
         return points;
     }
 };
+
+}
+}

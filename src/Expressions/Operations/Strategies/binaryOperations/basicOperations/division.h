@@ -1,6 +1,7 @@
 #pragma once
 #include "../binaryStrategy.h"
-
+namespace ArithmeticPoints{
+namespace Strategies{
 template <typename Type>
 class Division: public BinaryStrategy<Type> {
     public:
@@ -12,3 +13,5 @@ class Division: public BinaryStrategy<Type> {
             }
         }
 };
+}
+}
