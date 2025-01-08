@@ -5,9 +5,16 @@
 
 namespace ArithmeticPoints{
 namespace Factories{
+
 template <typename Type>
 class BasicFactory: public AbstractExpressionsFactory<Type> {
 public:
+    BasicFactory() {
+        registerStrategies();
+    }
+
+    void registerStrategies() override;
+
     // Creates an operation expression using the specified operation and strategy types.
     // The operationCreators map stores functions that create operation expressions.
     std::shared_ptr<Expressions::Expression<Type>> createUnaryOperation(const std::string& strategyType,
@@ -48,3 +55,5 @@ protected:
 };
 }
 }
+
+#include "basicFactoryStrategies.h"

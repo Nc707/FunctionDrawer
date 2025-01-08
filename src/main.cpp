@@ -22,7 +22,7 @@ void generarSVG(const std::vector<std::tuple<double, double>>& puntos, const std
 }
 
 int main() {
-    auto x = ArithmeticPoints::var();
+    auto x = ArithmeticPoints::var<double>();
     x = sin(x) / cos(x);
     ArithmeticPoints::PointGeneration::Basic2DGenerator<double> funcion(x.getArgument());
     std::vector<std::tuple<double, double>> puntos = funcion.generatePoints({-10, 1000, 0.1});

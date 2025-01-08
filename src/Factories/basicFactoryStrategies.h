@@ -1,9 +1,11 @@
-#include "realExpressionFactory.h"
+#include "basicFactory.h"
 
 namespace ArithmeticPoints{
 namespace Factories{
 namespace ST = Strategies;
-void RealExpressionFactory::registerStrategies() {
+
+template <typename Type>
+void BasicFactory<Type>::registerStrategies() {
     registerStrategy("addition", std::make_shared<ST::Addition<double>>());
     registerStrategy("subtraction", std::make_shared<ST::Subtraction<double>>());
     registerStrategy("multiplication", std::make_shared<ST::Multiplication<double>>());
@@ -14,6 +16,10 @@ void RealExpressionFactory::registerStrategies() {
     registerStrategy("sine", std::make_shared<ST::Sine<double>>());
     registerStrategy("cosine", std::make_shared<ST::Cosine<double>>());
     registerStrategy("tangent", std::make_shared<ST::Tangent<double>>());
+
 }
+
+template class BasicFactory<double>;
+
 }
 }

@@ -2,19 +2,20 @@
 #include <memory>
 #include "Factories/realExpressionFactory.h"
 namespace ArithmeticPoints{
+template <typename Type>
 class var {
 private:
-    std::shared_ptr<Expressions::Expression<double>> argument;
-    static Factories::RealExpressionFactory factory;
+    std::shared_ptr<Expressions::Expression<Type>> argument;
+    static Factories::BasicFactory<Type> factory;
 
 public:
-    var(std::shared_ptr<Expressions::Expression<double>> argument) : argument(std::move(argument)) {}
+    var(std::shared_ptr<Expressions::Expression<Type>> argument) : argument(std::move(argument)) {}
 
     var() { argument = factory.createVariable(); }
 
     var(double value) : argument(factory.createConstant(value)) {}
 
-    std::shared_ptr<Expressions::Expression<double>> getArgument() const {
+    std::shared_ptr<Expressions::Expression<Type>> getArgument() const {
         return argument;
     }
 
@@ -133,5 +134,6 @@ public:
 };
 
 // Define the static member
-Factories::RealExpressionFactory var::factory;
+template <typename Type>
+Factories::BasicFactory<Type> var<Type>::factory;
 }
