@@ -1,13 +1,13 @@
 #pragma once
+#include "../strategyConfig.h"
+#include <span>
 
 namespace ArithmeticPoints{
 namespace Strategies{
 template<typename Type>
 class OperationStrategy {
 public:
-    virtual Type evaluate(const Type& left, const Type& right) const = 0;
-    virtual Type evaluate(const Type& value) const = 0;
-    virtual int getArity() const = 0;
+    virtual Type evaluate(std::span<const Type> arguments,const StrategyConfig<Type>& config) const = 0;
 };
 }
 }

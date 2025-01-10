@@ -2,7 +2,7 @@
 #include <fstream>
 #include <vector>
 #include "PointsGenerators/2DGenerators/basic2DGenerator.h"
-#include "var.h"
+#include "Variables/basicExpressionVariable.h"
 void generarSVG(const std::vector<std::tuple<double, double>>& puntos, const std::string& filename) {
     std::ofstream file(filename);
     if (!file.is_open()) {
@@ -22,13 +22,15 @@ void generarSVG(const std::vector<std::tuple<double, double>>& puntos, const std
 }
 
 int main() {
-    auto x = ArithmeticPoints::var<double>();
-    x = sin(x) / cos(x);
+    ArithmeticPoints::BasicExpressionVariable<double> x = ArithmeticPoints::BasicExpressionVariable<double>();
+    x = sin(x)/ cos(x) * 6;
     ArithmeticPoints::PointGeneration::Basic2DGenerator<double> funcion(x.getArgument());
     std::vector<std::tuple<double, double>> puntos = funcion.generatePoints({-10, 1000, 0.1});
-    //for (const auto& punto : puntos) {
-    //    std::cout << "(" << std::get<0>(punto) << ", " << std::get<1>(punto) << ")\n";
-    //}
+    //*
+    for (const auto& punto : puntos) {
+        std::cout << "(" << std::get<0>(punto) << ", " << std::get<1>(punto) << ")\n";
+    }
+    //*/
     generarSVG(puntos, "output.svg");
     return 0;
 }

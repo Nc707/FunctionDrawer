@@ -1,11 +1,12 @@
 #pragma once
 
 #include "abstractExpressionsFactory.h"
+#include "../Expressions/all_expressions.h"
 #include <sstream>
 
 namespace ArithmeticPoints{
 namespace Factories{
-
+namespace ST = Strategies;
 template <typename Type>
 class BasicFactory: public AbstractExpressionsFactory<Type> {
 public:
@@ -13,47 +14,37 @@ public:
         registerStrategies();
     }
 
-    void registerStrategies() override;
+    void registerStrategies() override {
+    this->registerStrategy("addition", std::make_shared<ST::Addition<Type>>());
+    this->registerStrategy("subtraction", std::make_shared<ST::Subtraction<Type>>());
+    this->registerStrategy("multiplication", std::make_shared<ST::Multiplication<Type>>());
+    this->registerStrategy("division", std::make_shared<ST::Division<Type>>());
+    this->registerStrategy("exponent", std::make_shared<ST::Exponent<Type>>());
+    this->registerStrategy("logarithm", std::make_shared<ST::Logarithm<Type>>());
+    this->registerStrategy("negation", std::make_shared<ST::Negation<Type>>());
+    this->registerStrategy("sine", std::make_shared<ST::Sine<Type>>());
+    this->registerStrategy("cosine", std::make_shared<ST::Cosine<Type>>());
+    this->registerStrategy("tangent", std::make_shared<ST::Tangent<Type>>());
 
-    // Creates an operation expression using the specified operation and strategy types.
-    // The operationCreators map stores functions that create operation expressions.
-    std::shared_ptr<Expressions::Expression<Type>> createUnaryOperation(const std::string& strategyType,
-    const std::shared_ptr<Expressions::Expression<Type>>& argument) {
-        std::shared_ptr<Strategies::OperationStrategy<Type>> strategy = findStrategy(strategyType);
-        verifyArities(strategy->getArity(), Expressions::UnaryOperation<Type>::getArity());
-        return std::make_shared<Expressions::UnaryOperation<Type>>(argument, strategy);
-    }
+    this->registerConfig("default", ST::StrategyConfig<Type>());
 
-    std::shared_ptr<Expressions::Expression<Type>> createBinaryOperation(const std::string& strategyType,
-    const std::shared_ptr<Expressions::Expression<Type>>& left,
-    const std::shared_ptr<Expressions::Expression<Type>>& right) {
-        std::shared_ptr<Strategies::OperationStrategy<Type>> strategy = findStrategy(strategyType);
-        verifyArities(strategy->getArity(), Expressions::BinaryOperation<Type>::getArity());
-        return std::make_shared<Expressions::BinaryOperation<Type>>(left, right, strategy);
     }
 
     std::string getAvailableStrategyTypes() const override{
+    std::ostringstream result;
+    for (const auto& [key, value] : this->strategyCreators) {
+        result << key << " ";
+    }
+    return result.str();
+    }
+
+    std::string getAvailableStrategyConfigs() const override{
         std::ostringstream result;
-        for (const auto& [key, value] : strategyCreators) {
+        for (const auto& [key, value] : AbstractExpressionsFactory<Type>::strategyConfigs) {
             result << key << " ";
         }
         return result.str();
     }
-protected:
-    void verifyArities(int firstArity, int secondArity) const {
-        if(firstArity != secondArity)
-            throw std::invalid_argument("Arities do not match.");
-    }
-
-    std::shared_ptr<Strategies::OperationStrategy<Type>> findStrategy(const std::string& strategyType) {
-        auto it = strategyCreators.find(strategyType);
-        if(it == strategyCreators.end())
-            throw std::invalid_argument("Unknown strategy type: " + strategyType + "\n" +
-            "Available strategy types: " + getAvailableStrategyTypes());
-        else    return it->second();
-    }
 };
 }
 }
-
-#include "basicFactoryStrategies.h"
