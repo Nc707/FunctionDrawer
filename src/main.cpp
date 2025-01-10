@@ -1,8 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include <vector>
-#include "PointsGenerators/2DGenerators/basic2DGenerator.h"
-#include "Variables/basicExpressionVariable.h"
+#include "ArithmeticPoints/arithmeticPoints.h"
 void generarSVG(const std::vector<std::tuple<double, double>>& puntos, const std::string& filename) {
     std::ofstream file(filename);
     if (!file.is_open()) {
