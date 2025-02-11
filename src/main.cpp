@@ -19,7 +19,7 @@ void generarSVG(const std::vector<std::tuple<double, double>>& puntos, const std
 
     file.close();
 }
-
+#ifndef RUNNING_TESTS
 int main() {
     ArithmeticPoints::BasicExpressionVariable<double> x = ArithmeticPoints::BasicExpressionVariable<double>();
     x = sin(x)/ cos(x) * 6;
@@ -33,3 +33,4 @@ int main() {
     generarSVG(puntos, "output.svg");
     return 0;
 }
+#endif
